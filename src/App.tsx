@@ -16,7 +16,7 @@ import {
   Megaphone
 } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
-import { UserManagement } from './components/UserManagement';
+import { UserManagement } from './components/UserManagement/_UserManagment.tsx';
 import { BillingManagement } from './components/BillingManagement';
 import { DatabaseControl } from './components/DatabaseControl';
 import { NewsAnnouncements } from './components/NewsAnnouncements';
