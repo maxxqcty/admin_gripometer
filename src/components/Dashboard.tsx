@@ -3,6 +3,8 @@ import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
 import { Users, Droplets, Receipt, Database, TrendingUp, TrendingDown, Clock, CheckCircle } from 'lucide-react';
+import Logo from "./ui/logo/Logo.tsx";
+
 
 const monthlyData = [
   { name: 'Jan', consumption: 4221, bills: 320 },

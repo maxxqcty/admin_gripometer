@@ -12,6 +12,8 @@ interface AuthLayoutProps {
   onLogin: (email: string, password: string) => void;
 }
 
+import Logo from "./ui/logo/Logo.tsx";
+
 type AuthView = 'login' | 'signup' | 'forgot-password' | 'reset-success';
 
 export function AuthLayout({ onLogin }: AuthLayoutProps) {
@@ -391,7 +393,9 @@ export function AuthLayout({ onLogin }: AuthLayoutProps) {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <img src="/assets/images/logo.png" alt="Logo" className='h-24' />
+            
+              <Logo size={100} withText={false} />
+         
           </div>
           <h1 className="text-2xl font-bold mb-2">GripoMeter Admin</h1>
           <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
@@ -416,7 +420,7 @@ export function AuthLayout({ onLogin }: AuthLayoutProps) {
 
         <div className="text-center mt-6">
           <p className="text-xs text-muted-foreground">
-            © 2025 Municipal Water District. All rights reserved.
+            © 2024 Municipal Water District. All rights reserved.
           </p>
         </div>
       </div>
