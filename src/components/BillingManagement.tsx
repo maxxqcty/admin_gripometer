@@ -15,7 +15,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { format } from "date-fns";
 
 const bills = [
-  { id: 1, customerName: "Rodriguez Family", meterNumber: "WM001234", previousReading: 1250, currentReading: 1275, consumption: 25, amount: 385.50, dueDate: "2024-02-15", status: "paid", paidDate: "2024-02-10" },
+  { id: 1, customerName: "Rodriguez Family", meterNumber: "OW1234", previousReading: 1250, currentReading: 1275, consumption: 25, amount: 385.50, dueDate: "2024-02-15", status: "paid", paidDate: "2024-02-10" },
   { id: 2, customerName: "Lopez Household", meterNumber: "WM001235", previousReading: 980, currentReading: 1008, consumption: 28, amount: 421.20, dueDate: "2024-02-15", status: "pending", paidDate: null },
   { id: 3, customerName: "Mendoza Family", meterNumber: "WM001236", previousReading: 1420, currentReading: 1455, consumption: 35, amount: 508.75, dueDate: "2024-02-15", status: "overdue", paidDate: null },
   { id: 4, customerName: "Silva Residence", meterNumber: "WM001237", previousReading: 875, currentReading: 895, consumption: 20, amount: 315.00, dueDate: "2024-02-15", status: "paid", paidDate: "2024-02-08" },
