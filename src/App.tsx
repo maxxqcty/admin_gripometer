@@ -15,7 +15,7 @@ import {
   Shield,
   Megaphone
 } from 'lucide-react';
-import { Dashboard } from './components/Dashboard';
+import { Dashboard } from './components/Dashboard/Dashboard.tsx';
 import { UserManagement } from './components/UserManagement/_UserManagment.tsx';
 import { BillingManagement } from './components/BillingManagement/_BillingManagement.tsx';
 import { DatabaseControl } from './components/DatabaseControl';
