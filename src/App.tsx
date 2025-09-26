@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { UserManagement } from './components/UserManagement/_UserManagment.tsx';
-import { BillingManagement } from './components/BillingManagement';
+import { BillingManagement } from './components/BillingManagement/_BillingManagement.tsx';
 import { DatabaseControl } from './components/DatabaseControl';
 import { NewsAnnouncements } from './components/NewsAnnouncements';
 import { Settings as SettingsIcon } from './components/Settings';
