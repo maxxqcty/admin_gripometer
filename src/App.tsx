@@ -23,6 +23,7 @@ import { NewsAnnouncements } from './components/NewsAnnouncements';
 import { Settings as SettingsIcon } from './components/Settings';
 
 import { AuthLayout } from './components/AuthLayout';
+import Logo from "./components/ui/logo/Logo.tsx";
 
 const navigation = [
   { name: 'Dashboard', icon: LayoutDashboard, id: 'dashboard' },
@@ -82,9 +83,7 @@ export default function App() {
         <Sidebar className="border-r bg-gradient-to-b from-sidebar to-sidebar/95">
           <SidebarHeader className="p-6 border-b border-sidebar-border/50">
             <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl shadow-lg">
-                <Droplets className="h-7 w-7 text-primary-foreground" />
-              </div>
+            <Logo size={100} withText={false} />
               <div>
                 <h1 className="text-xl font-bold text-sidebar-foreground">GripoMeter</h1>
                 <p className="text-sm text-sidebar-foreground/70">Water District Admin</p>
