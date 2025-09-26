@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Users, Droplets, Receipt, Database, TrendingUp, TrendingDown, Clock, CheckCircle } from 'lucide-react';
 
 const monthlyData = [
-  { name: 'Jan', consumption: 4200, bills: 320 },
+  { name: 'Jan', consumption: 4221, bills: 320 },
   { name: 'Feb', consumption: 3800, bills: 298 },
   { name: 'Mar', consumption: 4100, bills: 315 },
   { name: 'Apr', consumption: 4500, bills: 342 },
