@@ -19,7 +19,7 @@ import { Dashboard } from './components/Dashboard';
 import { UserManagement } from './components/UserManagement/_UserManagment.tsx';
 import { BillingManagement } from './components/BillingManagement/_BillingManagement.tsx';
 import { DatabaseControl } from './components/DatabaseControl';
-import { NewsAnnouncements } from './components/NewsAnnouncements';
+import { NewsAnnouncements } from './components/Announcements/NewsAnnouncements';
 import { Settings as SettingsIcon } from './components/Settings';
 
 import { AuthLayout } from './components/AuthLayout';
