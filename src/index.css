@@ -866,6 +866,9 @@
     height: calc(var(--spacing) * 20);
   }
 
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
   .h-\[1\.15rem\] {
     height: 1.15rem;
   }

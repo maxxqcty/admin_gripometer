@@ -391,9 +391,7 @@ export function AuthLayout({ onLogin }: AuthLayoutProps) {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="flex items-center justify-center w-16 h-16 bg-primary rounded-2xl shadow-lg">
-              <Droplets className="h-8 w-8 text-primary-foreground" />
-            </div>
+            <img src="/assets/images/logo.png" alt="Logo" className='h-24' />
           </div>
           <h1 className="text-2xl font-bold mb-2">GripoMeter Admin</h1>
           <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
@@ -418,7 +416,7 @@ export function AuthLayout({ onLogin }: AuthLayoutProps) {
 
         <div className="text-center mt-6">
           <p className="text-xs text-muted-foreground">
-            © 2024 Municipal Water District. All rights reserved.
+            © 2025 Municipal Water District. All rights reserved.
           </p>
         </div>
       </div>
