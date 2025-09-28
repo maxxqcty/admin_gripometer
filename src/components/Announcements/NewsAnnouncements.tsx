@@ -1,85 +1,12 @@
 import {useState} from "react";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "../ui/card";
 import {Badge} from "../ui/badge";
 import {Button} from "../ui/button";
-import {Input} from "../ui/input";
-import {Label} from "../ui/label";
-import {Textarea} from "../ui/textarea";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "../ui/table";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "../ui/tabs";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "../ui/dialog";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "../ui/select";
-import {Calendar} from "../ui/calendar";
-import {Popover, PopoverContent, PopoverTrigger} from "../ui/popover";
-import {Switch} from "../ui/switch";
-import {
-	Megaphone,
-	Plus,
-	Search,
-	Filter,
-	Calendar as CalendarIcon,
-	Edit,
-	Trash2,
-	Eye,
-	AlertTriangle,
-	Info,
-	Wrench,
-	Droplets,
-	Clock,
-	Users,
-	Send,
-	MoreHorizontal,
-	PinIcon,
-	Archive,
-} from "lucide-react";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+import {AlertTriangle, Info, Wrench, Droplets} from "lucide-react";
 import {SummaryCardsSection} from "./_SummaryCardSection"; // ✅ use the new section
 import {AnnouncementsTable} from "./_AnnouncementTable";
 import CreateAnnouncementDialog from "./_CreateAnnouncement";
-import { announcements } from "./announcements"
-
-
-// Simple date formatting utility
-const formatDate = (date: Date) => {
-	return date.toLocaleDateString("en-US", {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	});
-};
-
+import {announcements} from "./announcements";
+import {filterData} from "../utils/filterData";
 
 export function NewsAnnouncements() {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -203,16 +130,12 @@ export function NewsAnnouncements() {
 		setExpiryDate(undefined);
 	};
 
-	const filteredAnnouncements = announcements.filter((announcement) => {
-		const matchesSearch =
-			announcement.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			announcement.content.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesType =
-			selectedType === "all" || announcement.type === selectedType;
-		const matchesStatus =
-			selectedStatus === "all" || announcement.status === selectedStatus;
-		return matchesSearch && matchesType && matchesStatus;
-	});
+	const filteredAnnouncements = filterData({
+		data: announcements,
+		searchTerm,
+		selectedStatus,
+		fields: ["title", "content"],
+	}).filter((a) => selectedType === "all" || a.type === selectedType);
 
 	return (
 		<div className="flex-1 space-y-8 p-8 pt-8">
