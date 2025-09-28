@@ -2,9 +2,16 @@ import { StatsCards } from "./_StatsCards";
 import { WaterConsumptionChart, PaymentStatusPieChart } from "./_Charts";
 import { RecentActivity } from "./_RecentActivity";
 import { Badge } from "../ui/badge";
-import { statsData } from "./dashboardData";
+import { useStatsData } from "./dashboardData";   
+import { LoadingUI } from "../ui/loading";  // Import the loading component
 
 export function Dashboard() {
+  const { statsData, loading } = useStatsData();
+
+//  if (loading) {
+//    return <LoadingUI />;
+//   }
+
   return (
     <div className="flex-1 space-y-8 p-8 pt-8">
       <div className="flex items-center justify-between">

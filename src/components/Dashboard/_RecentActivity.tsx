@@ -2,9 +2,14 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui
 import { Badge } from "../ui/badge";
 import { Clock } from "lucide-react";
 import { Progress } from "../ui/progress";
-import { recentReadings, pendingApprovals, systemHealth } from "./dashboardData";
+import { recentReadings, pendingApprovals, systemHealth} from "./dashboardData";
+// import { useRecentReadings, usePendingApprovals, useSystemHealth} from "./dashboardData";
 
 export function RecentActivity() {
+  // const { recentReadings } = useRecentReadings();
+  // const { pendingApprovals } = usePendingApprovals();
+  // const { systemHealth } = useSystemHealth();
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {/* Recent Meter Readings */}

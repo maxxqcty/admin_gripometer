@@ -3,9 +3,13 @@ import { Badge } from "../ui/badge";
 import { Users, Droplets, Receipt, Database, TrendingUp, CheckCircle } from "lucide-react";
 
 // ✅ Import statsData from your unified dashboard data
-import { statsData } from "../Dashboard/dashboardData";
+// import { useStatsData } from "./dashboardData";
+
+import { statsData } from "./dashboardData";
 
 export function StatsCards() {
+  // const { statsData } = useStatsData();
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       {statsData.map((stat, idx) => {
