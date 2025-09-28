@@ -1,8 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { recentReadings, pendingApprovals, systemHealth} from "./dashboardData";
 import { monthlyData, statusData } from "./dashboardData";
+// import { useMonthlyData, useStatusData } from "./dashboardData";
+
+
+
 
 export function WaterConsumptionChart() {
+  // const { monthlyData } = useMonthlyData();
+
   return (
     <Card className="col-span-4">
       <CardHeader>
@@ -26,6 +33,8 @@ export function WaterConsumptionChart() {
 }
 
 export function PaymentStatusPieChart() {
+  // const { statusData } = useStatusData();
+
   return (
     <Card className="col-span-3">
       <CardHeader>
