@@ -20,7 +20,7 @@ interface MeterReader {
 	households: number;
 	status: string;
 	lastActive: string;
-	accountNumber:string;
+	accountNumber: string;
 }
 
 interface MeterReadersTableProps {
@@ -43,75 +43,86 @@ export function MeterReadersTable({data}: MeterReadersTableProps) {
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{data.map((reader) => (
-					<TableRow key={reader.id}>
-						{/* Account Number */}
-						<TableCell className="font-medium">
-							{reader.accountNumber}
-						</TableCell>
+				{data.length > 0 ? (
+					data.map((reader) => (
+						<TableRow key={reader.id}>
+							{/* Account Number */}
+							<TableCell className="font-medium">
+								{reader.accountNumber}
+							</TableCell>
 
-						{/* Name */}
-						<TableCell className="font-medium">
-							{reader.name}
-							<div className="text-sm text-muted-foreground">
-								#MR{reader.id.toString().padStart(3, "0")}
-							</div>
-						</TableCell>
-
-						{/* Contact */}
-						<TableCell>
-							<div className="flex flex-col space-y-1">
-								<div className="flex items-center text-sm">
-									<Mail className="mr-1 h-3 w-3" />
-									{reader.email}
+							{/* Name */}
+							<TableCell className="font-medium">
+								{reader.name}
+								<div className="text-sm text-muted-foreground">
+									#MR{reader.id.toString().padStart(3, "0")}
 								</div>
-								<div className="flex items-center text-sm text-muted-foreground">
-									<Phone className="mr-1 h-3 w-3" />
-									{reader.phone}
+							</TableCell>
+
+							{/* Contact */}
+							<TableCell>
+								<div className="flex flex-col space-y-1">
+									<div className="flex items-center text-sm">
+										<Mail className="mr-1 h-3 w-3" />
+										{reader.email}
+									</div>
+									<div className="flex items-center text-sm text-muted-foreground">
+										<Phone className="mr-1 h-3 w-3" />
+										{reader.phone}
+									</div>
 								</div>
-							</div>
-						</TableCell>
+							</TableCell>
 
-						{/* Assigned Area */}
-						<TableCell>
-							<div className="flex items-center">
-								<MapPin className="mr-1 h-3 w-3" />
-								{reader.area}
-							</div>
-						</TableCell>
+							{/* Assigned Area */}
+							<TableCell>
+								<div className="flex items-center">
+									<MapPin className="mr-1 h-3 w-3" />
+									{reader.area}
+								</div>
+							</TableCell>
 
-						{/* Households */}
-						<TableCell>{reader.households}</TableCell>
+							{/* Households */}
+							<TableCell>{reader.households}</TableCell>
 
-						{/* Status */}
-						<TableCell>
-							<StatusBadge status={reader.status} />
-						</TableCell>
+							{/* Status */}
+							<TableCell>
+								<StatusBadge status={reader.status} />
+							</TableCell>
 
-						{/* Last Active */}
-						<TableCell className="text-sm text-muted-foreground">
-							{reader.lastActive}
-						</TableCell>
+							{/* Last Active */}
+							<TableCell className="text-sm text-muted-foreground">
+								{reader.lastActive}
+							</TableCell>
 
-						{/* Actions */}
-						<TableCell className="text-right">
-							<div className="flex justify-end gap-2">
-								<Button variant="ghost" size="icon" title="View Details">
-									<Eye className="h-4 w-4" />
-								</Button>
-								<Button variant="ghost" size="icon" title="Edit Information">
-									<Edit className="h-4 w-4" />
-								</Button>
-								<Button variant="ghost" size="icon" title="Reset Password">
-									<Key className="h-4 w-4" />
-								</Button>
-								<Button variant="destructive" size="icon" title="Deactivate">
-									<Trash2 className="h-4 w-4" />
-								</Button>
-							</div>
+							{/* Actions */}
+							<TableCell className="text-right">
+								<div className="flex justify-end gap-2">
+									<Button variant="ghost" size="icon" title="View Details">
+										<Eye className="h-4 w-4" />
+									</Button>
+									<Button variant="ghost" size="icon" title="Edit Information">
+										<Edit className="h-4 w-4" />
+									</Button>
+									<Button variant="ghost" size="icon" title="Reset Password">
+										<Key className="h-4 w-4" />
+									</Button>
+									<Button variant="destructive" size="icon" title="Deactivate">
+										<Trash2 className="h-4 w-4" />
+									</Button>
+								</div>
+							</TableCell>
+						</TableRow>
+					))
+				) : (
+					<TableRow>
+						<TableCell
+							colSpan={8}
+							className="text-center py-6 text-muted-foreground"
+						>
+							No Meter Readers Found
 						</TableCell>
 					</TableRow>
-				))}
+				)}
 			</TableBody>
 		</Table>
 	);

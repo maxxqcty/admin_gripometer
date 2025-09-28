@@ -5,7 +5,6 @@ import {
 	Edit,
 	Trash2,
 	Eye,
-	MoreHorizontal,
 	PinIcon,
 	Archive,
 } from "lucide-react";
@@ -33,12 +32,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../ui/select";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
 
 interface Announcement {
 	id: number;
@@ -143,82 +136,101 @@ export function AnnouncementsTable({
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{filteredAnnouncements.map((announcement) => (
-							<TableRow key={announcement.id}>
-								<TableCell>
-									<div className="space-y-1">
+						{filteredAnnouncements.length > 0 ? (
+							filteredAnnouncements.map((announcement) => (
+								<TableRow key={announcement.id}>
+									<TableCell>
+										<div className="space-y-1">
+											<div className="flex items-center">
+												{announcement.isPinned && (
+													<PinIcon className="h-3 w-3 text-primary mr-2" />
+												)}
+												<div className="font-semibold">
+													{announcement.title}
+												</div>
+											</div>
+											<div className="text-sm text-muted-foreground line-clamp-2">
+												{announcement.content.substring(0, 100)}...
+											</div>
+										</div>
+									</TableCell>
+									<TableCell>{getTypeBadge(announcement.type)}</TableCell>
+									<TableCell>
+										{getPriorityBadge(announcement.priority)}
+									</TableCell>
+									<TableCell>{getStatusBadge(announcement.status)}</TableCell>
+									<TableCell>
+										{announcement.publishDate ? (
+											<div className="flex items-center text-sm">
+												<CalendarIcon className="mr-1 h-3 w-3" />
+												{new Date(
+													announcement.publishDate
+												).toLocaleDateString()}
+											</div>
+										) : (
+											<span className="text-muted-foreground">-</span>
+										)}
+									</TableCell>
+									<TableCell>
 										<div className="flex items-center">
-											{announcement.isPinned && (
-												<PinIcon className="h-3 w-3 text-primary mr-2" />
-											)}
-											<div className="font-semibold">{announcement.title}</div>
+											<Eye className="mr-1 h-3 w-3" />
+											{announcement.views.toLocaleString()}
 										</div>
-										<div className="text-sm text-muted-foreground line-clamp-2">
-											{announcement.content.substring(0, 100)}...
-										</div>
-									</div>
-								</TableCell>
-								<TableCell>{getTypeBadge(announcement.type)}</TableCell>
-								<TableCell>{getPriorityBadge(announcement.priority)}</TableCell>
-								<TableCell>{getStatusBadge(announcement.status)}</TableCell>
-								<TableCell>
-									{announcement.publishDate ? (
-										<div className="flex items-center text-sm">
-											<CalendarIcon className="mr-1 h-3 w-3" />
-											{new Date(announcement.publishDate).toLocaleDateString()}
-										</div>
-									) : (
-										<span className="text-muted-foreground">-</span>
-									)}
-								</TableCell>
-								<TableCell>
-									<div className="flex items-center">
-										<Eye className="mr-1 h-3 w-3" />
-										{announcement.views.toLocaleString()}
-									</div>
-								</TableCell>
-								<TableCell className="text-right">
-									<TableCell className="text-right flex justify-end gap-1">
-										<Button
-											variant="ghost"
-											size="sm"
-											onClick={() =>
-												console.log("View Details", announcement.id)
-											}
-										>
-											<Eye className="mr-1 h-4 w-4" /> 
-										</Button>
-
-										<Button
-											variant="ghost"
-											size="sm"
-											onClick={() => console.log("Edit", announcement.id)}
-										>
-											<Edit className="mr-1 h-4 w-4" /> 
-										</Button>
-
-										{announcement.status === "published" && (
+									</TableCell>
+									<TableCell className="text-right">
+										<div className="flex justify-end gap-1">
 											<Button
 												variant="ghost"
 												size="sm"
-												onClick={() => console.log("Archive", announcement.id)}
+												onClick={() =>
+													console.log("View Details", announcement.id)
+												}
 											>
-												<Archive className="mr-1 h-4 w-4" /> 
+												<Eye className="mr-1 h-4 w-4" />
 											</Button>
-										)}
 
-										<Button
-											variant="ghost"
-											size="sm"
-											className="text-red-600"
-											onClick={() => console.log("Delete", announcement.id)}
-										>
-											<Trash2 className="mr-1 h-4 w-4" /> 
-										</Button>
+											<Button
+												variant="ghost"
+												size="sm"
+												onClick={() => console.log("Edit", announcement.id)}
+											>
+												<Edit className="mr-1 h-4 w-4" />
+											</Button>
+
+											{announcement.status === "published" && (
+												<Button
+													variant="ghost"
+													size="sm"
+													onClick={() =>
+														console.log("Archive", announcement.id)
+													}
+												>
+													<Archive className="mr-1 h-4 w-4" />
+												</Button>
+											)}
+
+											<Button
+												variant="ghost"
+												size="sm"
+												className="text-red-600"
+												onClick={() => console.log("Delete", announcement.id)}
+											>
+												<Trash2 className="mr-1 h-4 w-4" />
+											</Button>
+										</div>
 									</TableCell>
+								</TableRow>
+							))
+						) : (
+							<TableRow>
+								<TableCell
+									colSpan={7}
+									className="text-center py-6 text-muted-foreground"
+								>
+									No Announcements Found
 								</TableCell>
 							</TableRow>
-						))}
+						)}
 					</TableBody>
 				</Table>
 			</CardContent>

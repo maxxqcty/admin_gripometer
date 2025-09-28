@@ -20,7 +20,7 @@ import { UserManagement } from './components/UserManagement/UserManagment.tsx';
 import { BillingManagement } from './components/BillingManagement/BillingManagement.tsx';
 import { DatabaseControl } from './components/DatabaseControl';
 import { NewsAnnouncements } from './components/Announcements/NewsAnnouncements';
-import { Settings as SettingsIcon } from './components/Settings';
+import { Settings as SettingsPage } from './components/Settings';
 
 import { AuthLayout } from './components/AuthLayout';
 import Logo from "./components/ui/logo/Logo.tsx";
@@ -71,7 +71,7 @@ export default function App() {
       case 'database':
         return <DatabaseControl />;
       case 'settings':
-        return <Settings user={user} onLogout={handleLogout} />;
+        return <SettingsPage user={user} onLogout={handleLogout} />;
       default:
         return <Dashboard />;
     }

@@ -12,30 +12,26 @@ import {MeterReadersTable} from "./_MeterReadersTable";
 import {CustomersTable} from "./_CustomersTable";
 import {AddMeterReaderDialog} from "./_AddMeterReaderDialog";
 import {SearchFilter} from "./_SearchFilter";
+import {filterData} from "../utils/filterData";
 
 export function UserManagement() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedStatus, setSelectedStatus] = useState("all");
 
-	// Filtered Meter Readers
-	const filteredMeterReaders = meterReaders.filter((reader) => {
-		const matchesSearch =
-			reader.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			reader.email.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesStatus =
-			selectedStatus === "all" || reader.status === selectedStatus;
-		return matchesSearch && matchesStatus;
-	});
+  // Reuse the same filter for different datasets
+  const filteredMeterReaders = filterData({
+    data: meterReaders,
+    searchTerm,
+    selectedStatus,
+    fields: ["name", "email"],
+  });
 
-	// Filtered Customers
-	const filteredCustomers = customers.filter((customer) => {
-		const matchesSearch =
-			customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			customer.email.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesStatus =
-			selectedStatus === "all" || customer.status === selectedStatus;
-		return matchesSearch && matchesStatus;
-	});
+  const filteredCustomers = filterData({
+    data: customers,
+    searchTerm,
+    selectedStatus,
+    fields: ["name", "email"],
+  });
 
 	return (
 		<div className="flex-1 space-y-8 p-8 pt-8">
