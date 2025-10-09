@@ -1,39 +1,37 @@
-import { StatsCards } from "./_StatsCards";
-import { WaterConsumptionChart, PaymentStatusPieChart } from "./_Charts";
-import { RecentActivity } from "./_RecentActivity";
-import { Badge } from "../ui/badge";
-import { useStatsData } from "./dashboardData";   
-import { LoadingUI } from "../ui/loading";  // Import the loading component
+// components/Dashboard/Dashboard.tsx
+import { useDashboardValues } from "./dashboardData";
 
 export function Dashboard() {
-  const { statsData, loading } = useStatsData();
+  const {
+    statsData,
+    monthlyData,
+    statusData,
+    recentReadings,
+    pendingApprovals,
+    systemHealth,
+    loading,
+  } = useDashboardValues();
 
-//  if (loading) {
-//    return <LoadingUI />;
-//   }
+  if (loading) return <p>Loading dashboard data...</p>;
 
   return (
-    <div className="flex-1 space-y-8 p-8 pt-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h2>
-          <p className="text-muted-foreground mt-2">Overview of your water district operations</p>
-        </div>
-        <div className="flex items-center space-x-3">
-          <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary font-medium px-3 py-1">
-            Last updated: 2 mins ago
-          </Badge>
-        </div>
+    <div className="p-8 space-y-8">
+      {/* Example usage */}
+      <h1 className="text-3xl font-bold">Dashboard Overview</h1>
+
+      {/* Example render */}
+      <div className="grid grid-cols-2 gap-4">
+        {statsData.map((stat, index) => (
+          <div key={index} className="p-4 border rounded-lg">
+            <div className="flex items-center space-x-2">
+              <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
+              <span className="font-semibold">{stat.title}</span>
+            </div>
+            <p className="text-xl font-bold">{stat.value}</p>
+            <p className="text-sm text-muted-foreground">{stat.trendText}</p>
+          </div>
+        ))}
       </div>
-
-      <StatsCards />
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
-        <WaterConsumptionChart />
-        <PaymentStatusPieChart />
-      </div>
-
-      <RecentActivity />
     </div>
   );
 }

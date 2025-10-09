@@ -86,3 +86,40 @@ export const announcements: Announcement[] = [
     author: "Admin",
   },
 ]
+
+
+
+
+// export type Announcement = {
+//   id: number
+//   title: string
+//   content: string
+//   type: "maintenance" | "emergency" | "system" | "general" | string
+//   priority: "high" | "medium" | "low" | string
+//   status: "published" | "draft" | "scheduled" | "expired" | string
+//   publishDate: string | null
+//   expiryDate: string | null
+//   views: number
+//   isPinned: boolean
+//   author: string
+// }
+
+// export function useAnnouncements() {
+//   const [announcements, setAnnouncements] = useState<Announcement[]>([])
+//   const [loading, setLoading] = useState(true)
+
+//   useEffect(() => {
+//     fetch("http://localhost:8000/api/announcements")
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setAnnouncements(data) // Symfony should return an array of Announcement objects
+//         setLoading(false)
+//       })
+//       .catch((err) => {
+//         console.error("Failed to load announcements:", err)
+//         setLoading(false)
+//       })
+//   }, [])
+
+//   return { announcements, loading }
+// }

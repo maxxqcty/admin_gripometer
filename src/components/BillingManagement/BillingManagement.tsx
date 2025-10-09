@@ -1,3 +1,4 @@
+// components/billingManagement/billingManagement.tsx
 import { useState, useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { GenerateBillsDialog } from "./_GenerateBillsDialog";
@@ -6,10 +7,12 @@ import { BillingStatements } from "./_BillingStatementsTable";
 import { PaymentHistory } from "./_PaymentHistoryTable";
 import { Button } from "../ui/button";
 import { Download } from "lucide-react";
-import { bills, paymentHistory } from "./billingData";
+import { useBillingValues } from "./billingData"; // ✅ Correct import
 import { filterData } from "../utils/filterData";
 
 export function BillingManagement() {
+  const { bills, paymentHistory, loading, error } = useBillingValues();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [startDate, setStartDate] = useState<string>();
@@ -43,6 +46,9 @@ export function BillingManagement() {
     });
   }, [paymentHistory, searchTerm, startDate, endDate]);
 
+  if (loading) return <p>Loading billing data...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+
   return (
     <div className="flex-1 space-y-8 p-8 pt-8">
       {/* Header */}
@@ -70,9 +76,7 @@ export function BillingManagement() {
       {/* Tabs */}
       <Tabs defaultValue="billing-statements" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="billing-statements">
-            Billing Statements
-          </TabsTrigger>
+          <TabsTrigger value="billing-statements">Billing Statements</TabsTrigger>
           <TabsTrigger value="payment-history">Payment History</TabsTrigger>
         </TabsList>
 
