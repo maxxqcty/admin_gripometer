@@ -25,15 +25,15 @@ import {
 	Shield,
 	Megaphone,
 } from "lucide-react";
-import {Dashboard} from "./components/Dashboard/Dashboard.tsx";
-import {UserManagement} from "./components/UserManagement/UserManagment.tsx";
-import {BillingManagement} from "./components/BillingManagement/BillingManagement.tsx";
-import {DatabaseControl} from "./components/DatabaseControl";
-import {NewsAnnouncements} from "./components/Announcements/NewsAnnouncements";
-import {Settings as SettingsPage} from "./components/Settings";
+import {Dashboard} from "./components/Pages/Dashboard/Dashboard.tsx";
+import {UserManagement} from "./components/Pages/UserManagement/UserManagment.tsx";
+import {BillingManagement} from "./components/Pages/BillingManagement/BillingManagement.tsx";
+import {DatabaseControl} from "./components/Pages/DatabaseControl";
+import {NewsAnnouncements} from "./components/Pages/Announcements/NewsAnnouncements";
+import {Settings as SettingsPage} from "./components/Pages/Settings";
 import {NotificationsModal} from "./components/modals/notification.tsx";
 
-import {AuthLayout} from "./components/AuthLayout";
+import {AuthLayout} from "./components/Auth/AuthLayout";
 import Logo from "./components/ui/logo/Logo.tsx";
 
 const navigation = [
