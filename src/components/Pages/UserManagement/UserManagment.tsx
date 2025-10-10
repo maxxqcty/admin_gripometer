@@ -9,7 +9,6 @@ import {
 	CardContent,
 } from "../../ui/card";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "../../ui/tabs";
-// import {meterReaders, customers} from "./data";
 import {MeterReadersTable} from "./_MeterReadersTable";
 import {CustomersTable} from "./_CustomersTable";
 import {AddMeterReaderDialog} from "./_AddMeterReaderDialog";
